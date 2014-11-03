@@ -1,0 +1,43 @@
+
+
+  <div>
+    <h3> Total Score: {{score}} </h3>
+  </div>
+  
+  <div ng-show = "answerAll()">
+    <h3> CONGRATULATION !!! </h3>
+  </div>
+  
+  <div>
+    <div> 
+      <h3>Add question: </h3>
+      <textarea autofocus type='text' ng-model = "nextQuestion.q"> </textarea> <br>
+      <button ng-click="addChoice()">Add choice</button> <br>
+      <div ng-repeat="choice in nextQuestion.options"> 
+        <input type="radio" name="radio" ng-click="nextQuestion.answer=choice.value"> 
+        <input autofocus ng-model="choice.value" type="text">
+        <button ng-click="removeChoice($index)">X</button>
+       </div> 
+      <input type='submit' ng-click ="addNextQuestion()" value="Submit" />
+    </div>
+  </div>
+  
+  <div ng-repeat="question in quiz" class="container">
+    <div>
+      <form action="">
+        <h3>{{$index+1}}. {{question.q}}</h3>
+          <div ng-repeat="choice in question.options">
+            <button ng-click="selectAnswer(choice, question)"> <span> {{$index +1}}. </span> {{choice.value}} 
+            </button>
+          </div>
+        <h3>You chose {{question.choice}}</h3>  
+      </form>
+    </div>
+ </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+    <!--<script src="../../dist/js/bootstrap.min.js"></script>-->
